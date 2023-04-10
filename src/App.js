@@ -1,7 +1,8 @@
 import "./App.css";
 import React from "react";
-import Dz from "./Dz";
-import DzOne from "./DzOne";
+// import Dz from "./Dz";
+// import DzOne from "./DzOne";
+import { DzTwo } from "./DzTwo";
 // function App() {
 // 	return (
 // 		<div className="App">
@@ -37,8 +38,10 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<Dz />
-					<DzOne />
+					{/* <Dz />
+					<DzOne /> */}
+					<DzTwo />
+					<setItems />
 				</header>
 			</div>
 		);
