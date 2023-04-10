@@ -1,10 +1,9 @@
 import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
-import PropTypes from "prop-types";
 
 const InitialList = ({
 	item: { id, title },
-	setList,
+	setItems,
 	updatedItem,
 	setUpdatedItem,
 }) => {
@@ -12,14 +11,15 @@ const InitialList = ({
 
 	const handleInputChange = useCallback(
 		({ target: { value } }) => {
-			setList((prevList) =>
+			setItems((prevList) =>
 				prevList.map((item) =>
 					item.id === id ? { ...item, title: value } : item
 				)
 			);
 		},
-		[id, setList, updatedItem]
+		[id, setItems]
 	);
+
 	const renderTitleOrInput = () => {
 		return isCurrentBeingUpdated ? (
 			<input value={title} onChange={handleInputChange} />
@@ -29,9 +29,9 @@ const InitialList = ({
 	};
 
 	return (
-		<div style={{ border: "1px solid navy", margin: "1rem", padding: "1rem" }}>
+		<div className="initial_list">
 			<div>
-				{id + 1}. {renderTitleOrInput()}
+				{id}. {renderTitleOrInput()}
 			</div>
 			<button onClick={() => setUpdatedItem(isCurrentBeingUpdated ? null : id)}>
 				{isCurrentBeingUpdated ? "Save" : "Edit"}
@@ -40,21 +40,10 @@ const InitialList = ({
 	);
 };
 
-InitialList.propTypes = {
-	item: PropTypes.shape({
-		id: PropTypes.number.isRequired,
-		title: PropTypes.string.isRequired,
-	}).isRequired,
-	setList: PropTypes.func.isRequired,
-	updatedItem: PropTypes.number,
-	setUpdatedItem: PropTypes.func.isRequired,
-};
-
 const DzTwo = () => {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
-	const [list, setList] = useState([]);
 	const [updatedItem, setUpdatedItem] = useState(
 		items.length > 0 ? items[0].id : null
 	);
@@ -86,13 +75,10 @@ const DzTwo = () => {
 					<InitialList
 						key={item.id}
 						item={item}
-						setList={setList}
+						setItems={setItems}
 						updatedItem={updatedItem}
 						setUpdatedItem={setUpdatedItem}
 					/>
-					// <div key={item.id}>
-					// 	<p>{item.title}</p>
-					// </div>
 				))}
 			</div>
 		);

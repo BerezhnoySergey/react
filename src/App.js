@@ -41,7 +41,6 @@ class App extends React.Component {
 					{/* <Dz />
 					<DzOne /> */}
 					<DzTwo />
-					<setItems />
 				</header>
 			</div>
 		);
