@@ -1,8 +1,10 @@
 import "./App.css";
 import React from "react";
+// import Login_Form from "./LoginForm";
+import LoginForms from "./LoginForms";
 // import Dz from "./Dz";
 // import DzOne from "./DzOne";
-import { DzTwo } from "./DzTwo";
+// import { DzTwo } from "./DzTwo";
 // function App() {
 // 	return (
 // 		<div className="App">
@@ -40,7 +42,9 @@ class App extends React.Component {
 				<header className="App-header">
 					{/* <Dz />
 					<DzOne /> */}
-					<DzTwo />
+					{/* <DzTwo /> */}
+					{/* <Login_Form /> */}
+					<LoginForms />
 				</header>
 			</div>
 		);
